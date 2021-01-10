@@ -171,10 +171,10 @@
       "KC_MPLY"
     ],
     [
-      "KC_TRNS",
       "RESET",
       "DEBUG",
-      "RGB_MOD",
+      "KC_NO",
+      "KC_NO",
       "RGB_RMOD",
       "RGB_HUD",
       "RGB_SAI",
@@ -221,7 +221,7 @@
       "KC_TRNS"
     ],
     [
-      "TO(0)",
+      "KC_NO",
       "KC_P7",
       "KC_P8",
       "KC_P9",
