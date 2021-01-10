@@ -50,3 +50,14 @@
 #ifdef RGB_DI_PIN
     #define RGB_MATRIX_KEYPRESSES // reacts to keypresses
 #endif
+
+/*  Add more layers if more than the default 4 */
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5 
+
+/* Change Tap Toggle to activate on 2 taps */
+#define TAPPING_TOGGLE 2
+
+#define DISABLE_RGB_MATRIX_RAINBOW_BEACON
+#define DISABLE_RGB_MATRIX_CYCLE_SPIRAL
+#define DISABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON
+

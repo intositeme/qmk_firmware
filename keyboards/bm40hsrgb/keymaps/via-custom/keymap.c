@@ -111,14 +111,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 )
 };
 
+extern rgb_config_t rgb_matrix_config;
 
+void keyboard_post_init_user(void) {
+  rgb_matrix_enable();
+}
+
+const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
+    [4] = { {0,0,0}, {0,204,255}, {0,204,255}, {0,204,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,204,255}, {0,204,255}, {0,0,0}, {0,0,0}, {0,204,255}, {0,204,255}, {0,204,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,204,255}, {0,204,255}, {0,204,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {146,224,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,204,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {146,224,255}, {146,224,255}, {146,224,255}, {0,0,0} },
+};
+
+void set_layer_color(int layer) {
+  for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
+    HSV hsv = {
+      .h = pgm_read_byte(&ledmap[layer][i][0]),
+      .s = pgm_read_byte(&ledmap[layer][i][1]),
+      .v = pgm_read_byte(&ledmap[layer][i][2]),
+    };
+    if (!hsv.h && !hsv.s && !hsv.v) {
+        rgb_matrix_set_color( i, 0, 0, 0 );
+    } else {
+        RGB rgb = hsv_to_rgb( hsv );
+        float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+        rgb_matrix_set_color( i, f * rgb.r, f * rgb.g, f * rgb.b );
+    }
+  }
+}
+
+void rgb_matrix_indicators_user(void) {
+//   if (g_suspend_state || keyboard_config.disable_layer_led) { return; }
+  switch (biton32(layer_state)) {
+    case 4:
+      set_layer_color(4);
+      break;
+   default:
+    if (rgb_matrix_get_flags() == LED_FLAG_NONE)
+      rgb_matrix_set_color_all(0, 0, 0);
+    break;
+  }
+}
 
 /* Enabling and disabling lighting layers */
 layer_state_t layer_state_set_user(layer_state_t state) {
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 };
-
-/* bool led_update_user(led_t led_state) {
-    rgblight_set_layer_state(0, led_state.caps_lock);
-    return true;
-} */
