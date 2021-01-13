@@ -27,12 +27,13 @@ enum layers {
 #define RAISE MO(_RAISE)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
+// clang-format of
 [_QWERTY] = LAYOUT_planck_mit(
-    KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R , KC_T  , KC_Y , KC_U , KC_I   , KC_O   , KC_P   , KC_BSPC,
-    TT(4)  , KC_A   , KC_S   , KC_D   , KC_F , KC_G  , KC_H , KC_J , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
-    MT(MOD_LSFT, KC_F23), KC_Z   , KC_X   , KC_C   , KC_V , KC_B  , KC_N , KC_M , KC_COMM, KC_DOT , KC_SLSH, KC_ENT ,
-    KC_GESC, KC_LCTL, KC_LALT, KC_LGUI, MO(1), KC_SPC,        MO(2), KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+  KC_TAB        , KC_Q   , KC_W   , KC_E   , KC_R , KC_T  , KC_Y , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,       
+  TT(4)         , KC_A   , KC_S   , KC_D   , KC_F , KC_G  , KC_H , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,       
+  OSM(MOD_LSFT) , KC_Z   , KC_X   , KC_C   , KC_V , KC_B  , KC_N , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_ENT ,       
+  // MT(MOD_LSFT, KC_F23), KC_Z   , KC_X   , KC_C , KC_V  , KC_B , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_ENT,
+  KC_GESC       , KC_LCTL, KC_LALT, KC_LGUI, MO(1), KC_SPC,          MO(2), KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT,              
 ),
 
 [_LOWER] = LAYOUT_planck_mit(
@@ -55,13 +56,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, _______,
     RGB_TOG, _______, _______, _______, _______, RGB_MOD, _______, _______,  _______, _______, _______
 ),
-/* Num Pad Layer */
-[_NUMPAD] = LAYOUT_planck_mit(
-    KC_NO  , KC_P7  , KC_P8, KC_P9  , KC_PAST, KC_NO  , KC_NO, KC_NO, KC_NO  , KC_LPRN, KC_RPRN, KC_TRNS,
-    KC_TRNS, KC_P4  , KC_P5, KC_P6  , KC_PSLS, KC_NO  , KC_NO, KC_NO, KC_NO  , KC_LBRC, KC_RBRC, KC_NO,
-    KC_LSFT, KC_P1  , KC_P2, KC_P3  , KC_PMNS, KC_NO  , KC_NO, KC_NO, KC_NO  , KC_UP  , KC_NO  , KC_TRNS,
-    KC_NO  , KC_PLUS, KC_P0, KC_PDOT, KC_EQL , KC_TRNS,        KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO
-)
+  /* Num Pad Layer */
+  [_NUMPAD] = LAYOUT_planck_mit(
+    XXXXXXX, KC_P7  , KC_P8, KC_P9  , KC_PAST, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LPRN, KC_RPRN, KC_TRNS,
+    KC_TRNS, KC_P4  , KC_P5, KC_P6  , KC_PSLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX,
+    KC_LSFT, KC_P1  , KC_P2, KC_P3  , KC_PMNS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_UP  , XXXXXXX, KC_TRNS,
+    XXXXXXX, KC_PLUS, KC_P0, KC_PDOT, KC_EQL , KC_TRNS,          XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX       
+  )
 };
 
 extern rgb_config_t rgb_matrix_config;
@@ -71,13 +72,13 @@ void keyboard_post_init_user(void) {
 }
 
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
-    [1] = {{180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+    [1] = {{180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {180, 255, 233}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}},
 
-    [2] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+    [2] = {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {}, {}, {}, {}, {}, {}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {85, 203, 158}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}},
 
-    [3] = {{249, 228, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {154, 255, 255}, {154, 255, 255}, {154, 255, 255}, {154, 255, 255}, {154, 255, 255}, {154, 255, 255}, {154, 255, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+    [3] = {{249, 228, 255}, {}, {}, {}, {154, 255, 255}, {154, 255, 255}, {154, 255, 255}, {154, 255, 255}, {154, 255, 255}, {154, 255, 255}, {154, 255, 255}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}},
 
-    [4] = {{0, 0, 0}, {0, 204, 255}, {0, 204, 255}, {0, 204, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 255, 255}, {0, 255, 255}, {0, 0, 0}, {0, 0, 0}, {0, 204, 255}, {0, 204, 255}, {0, 204, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 204, 255}, {0, 204, 255}, {0, 204, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {146, 224, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 204, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {146, 224, 255}, {146, 224, 255}, {146, 224, 255}, {0, 0, 0}},
+    [4] = {{}, {0, 204, 255}, {0, 204, 255}, {0, 204, 255}, {}, {}, {}, {}, {}, {0, 255, 255}, {0, 255, 255}, {}, {}, {0, 204, 255}, {0, 204, 255}, {0, 204, 255}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {0, 204, 255}, {0, 204, 255}, {0, 204, 255}, {}, {}, {}, {}, {}, {146, 224, 255}, {}, {}, {}, {}, {0, 204, 255}, {}, {}, {}, {}, {146, 224, 255}, {146, 224, 255}, {146, 224, 255}, {}},
 };
 
 void set_layer_color(int layer) {
@@ -124,6 +125,16 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 };
 
+// Set rgb light to off when system is sleep
+void suspend_power_down_user(void) {
+    rgb_matrix_set_suspend_state(true);
+}
+
+void suspend_wakeup_init_user(void) {
+    rgb_matrix_set_suspend_state(false);
+}
+
+// Sets F23 key to be Left shift when held, `(` when single tap, `)` when double tap
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case MT(MOD_LSFT, KC_F23):
